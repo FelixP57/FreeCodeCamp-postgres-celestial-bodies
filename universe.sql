@@ -172,6 +172,28 @@ CREATE TABLE public.satellite (
 ALTER TABLE public.satellite OWNER TO freecodecamp;
 
 --
+-- Name: satellite_satellite_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
+--
+
+CREATE SEQUENCE public.satellite_satellite_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.satellite_satellite_id_seq OWNER TO freecodecamp;
+
+--
+-- Name: satellite_satellite_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: freecodecamp
+--
+
+ALTER SEQUENCE public.satellite_satellite_id_seq OWNED BY public.satellite.satellite_id;
+
+
+--
 -- Name: star; Type: TABLE; Schema: public; Owner: freecodecamp
 --
 
@@ -209,28 +231,6 @@ ALTER SEQUENCE public.star_star_id_seq OWNED BY public.star.star_id;
 
 
 --
--- Name: table5_table5_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
---
-
-CREATE SEQUENCE public.table5_table5_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.table5_table5_id_seq OWNER TO freecodecamp;
-
---
--- Name: table5_table5_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: freecodecamp
---
-
-ALTER SEQUENCE public.table5_table5_id_seq OWNED BY public.satellite.satellite_id;
-
-
---
 -- Name: galaxy galaxy_id; Type: DEFAULT; Schema: public; Owner: freecodecamp
 --
 
@@ -255,7 +255,7 @@ ALTER TABLE ONLY public.planet ALTER COLUMN planet_id SET DEFAULT nextval('publi
 -- Name: satellite satellite_id; Type: DEFAULT; Schema: public; Owner: freecodecamp
 --
 
-ALTER TABLE ONLY public.satellite ALTER COLUMN satellite_id SET DEFAULT nextval('public.table5_table5_id_seq'::regclass);
+ALTER TABLE ONLY public.satellite ALTER COLUMN satellite_id SET DEFAULT nextval('public.satellite_satellite_id_seq'::regclass);
 
 
 --
@@ -365,17 +365,17 @@ SELECT pg_catalog.setval('public.planet_planet_id_seq', 12, true);
 
 
 --
+-- Name: satellite_satellite_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
+--
+
+SELECT pg_catalog.setval('public.satellite_satellite_id_seq', 3, true);
+
+
+--
 -- Name: star_star_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
 SELECT pg_catalog.setval('public.star_star_id_seq', 7, true);
-
-
---
--- Name: table5_table5_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
---
-
-SELECT pg_catalog.setval('public.table5_table5_id_seq', 3, true);
 
 
 --
